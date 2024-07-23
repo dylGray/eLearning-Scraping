@@ -14,6 +14,7 @@ def scrape_pdf(pdf):
 
 pdf = 'files/rise.pdf'
 extracted_text = scrape_pdf(pdf)
+print(f'extracted text from "{pdf}"')
 
 with open('extracted_text.txt', 'w', encoding='utf-8') as file:
     file.write(extracted_text)
