@@ -12,7 +12,7 @@ def scrape_pdf(pdf):
 
     return text
 
-pdf = 'files/rise.pdf'
+pdf = 'files/buyer-playbook.pdf'
 extracted_text = scrape_pdf(pdf)
 
 with open('extracted_text.txt', 'w', encoding='utf-8') as file:
