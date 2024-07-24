@@ -9,10 +9,11 @@ def scrape_pdf(pdf):
         text += page.get_text('text') + '\n'
 
     text = text.replace('CONTINUE', '')
+    text = text.replace('Complete the content above before moving on.', '')
 
     return text
 
-pdf = 'files/buyer-playbook.pdf'
+pdf = 'files/handle-navigate.pdf'
 extracted_text = scrape_pdf(pdf)
 print(f'extracted text from "{pdf}"')
 
