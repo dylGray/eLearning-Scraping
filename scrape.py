@@ -1,21 +1,36 @@
 import fitz
 
 def scrape_pdf(pdf):
-    pdf_doc = fitz.open(pdf)
+    try:
+        pdf_doc = fitz.open(pdf)
+    except FileNotFoundError:
+        print(f'ERROR: the file "{pdf}" was not found')
+        return None
+    except Exception as e:
+        print(f'an error occurred while opening the file - {e}')
+        return None
+    
     text = ''
 
-    for page_num in range(len(pdf_doc)):
-        page = pdf_doc.load_page(page_num)
-        text += page.get_text('text') + '\n'
+    try:
+        for page_num in range(len(pdf_doc)):
+            page = pdf_doc.load_page(page_num)
+            text += page.get_text('text') + '\n'
+    except Exception as e:
+        print(f'an error occurred while opening the file - {e}')
 
     text = text.replace('CONTINUE', '')
     text = text.replace('Complete the content above before moving on.', '')
 
     return text
 
-pdf = 'files/handle-navigate.pdf'
+pdf = 'files/day2/lets-get-neur.pdf'
 extracted_text = scrape_pdf(pdf)
-print(f'extracted text from "{pdf}"')
 
-with open('extracted_text.txt', 'w', encoding='utf-8') as file:
-    file.write(extracted_text)
+if extracted_text is not None:
+    try:
+        with open('extracted_text.txt', 'w', encoding='utf-8') as file:
+            file.write(extracted_text)
+        print(f'extracted text from "{pdf}" and wrote to "extracted_text.txt" successfully.')
+    except Exception as e:
+        print(f'an error occurred while writing to "extracted_text.txt" - {e}')
