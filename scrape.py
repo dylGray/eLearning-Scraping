@@ -21,10 +21,11 @@ def scrape_pdf(pdf):
 
     text = text.replace('CONTINUE', '')
     text = text.replace('Complete the content above before moving on.', '')
+    text = text.replace('Click the first lesson below or Start above to begin.', '')
 
     return text
 
-pdf = 'files/.pdf'
+pdf = 'files/day3/meeting-preparation.pdf'
 extracted_text = scrape_pdf(pdf)
 
 if extracted_text is not None:
