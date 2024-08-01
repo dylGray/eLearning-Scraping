@@ -25,7 +25,7 @@ def scrape_pdf(pdf):
 
     return text
 
-pdf = 'files/day5/our-need-for-approval-and-how-it-affects-selling.pdf'
+pdf = 'files/.pdf'
 extracted_text = scrape_pdf(pdf)
 
 if extracted_text is not None:
