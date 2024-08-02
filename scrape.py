@@ -25,7 +25,7 @@ def scrape_pdf(pdf):
 
     return text
 
-pdf = 'files/day6/account-growth.pdf'
+pdf = 'files/.pdf'
 extracted_text = scrape_pdf(pdf)
 
 if extracted_text is not None:
