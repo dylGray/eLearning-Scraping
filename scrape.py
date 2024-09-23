@@ -19,12 +19,14 @@ def scrape_pdf(pdf):
     except Exception as e:
         print(f'an error occurred while opening the file - {e}')
 
+    # text found within every pdf we want to ignore
     text = text.replace('CONTINUE', '')
     text = text.replace('Complete the content above before moving on.', '')
     text = text.replace('Click the first lesson below or Start above to begin.', '')
 
     return text
 
+# to access a certain file, edit pdf variable to match the given file path
 pdf = 'files/.pdf'
 extracted_text = scrape_pdf(pdf)
 
